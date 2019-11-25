@@ -39,16 +39,15 @@ char *strrev(char *str)
  */
 PHP_FUNCTION(str_reverse)
 {
-	char *var = "World";
-	size_t var_len = sizeof("World") - 1;
+	zend_string *input_var;
+	zend_long input_var_len;
         zend_string *retval;
 
-	ZEND_PARSE_PARAMETERS_START(0, 1)
-		Z_PARAM_OPTIONAL
-		Z_PARAM_STRING(var, var_len)
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(input_var, input_var_len)
 	ZEND_PARSE_PARAMETERS_END();
 
-	retval = strpprintf(0, "%s", strrev(var));
+	retval = strpprintf(0, "%s", strrev(input_var));
 
 	RETURN_STR(retval);
 }
@@ -96,14 +95,14 @@ static const zend_function_entry str_reverse_functions[] = {
  */
 zend_module_entry str_reverse_module_entry = {
 	STANDARD_MODULE_HEADER,
-	"str_reverse",					/* Extension name */
-	str_reverse_functions,			/* zend_function_entry */
-	NULL,							/* PHP_MINIT - Module initialization */
-	NULL,							/* PHP_MSHUTDOWN - Module shutdown */
-	PHP_RINIT(str_reverse),			/* PHP_RINIT - Request initialization */
-	NULL,							/* PHP_RSHUTDOWN - Request shutdown */
-	PHP_MINFO(str_reverse),			/* PHP_MINFO - Module info */
-	PHP_STR_REVERSE_VERSION,		/* Version */
+	"str_reverse",              /* Extension name */
+	str_reverse_functions,      /* zend_function_entry */
+	NULL,                       /* PHP_MINIT - Module initialization */
+	NULL,                       /* PHP_MSHUTDOWN - Module shutdown */
+	PHP_RINIT(str_reverse),     /* PHP_RINIT - Request initialization */
+	NULL,                       /* PHP_RSHUTDOWN - Request shutdown */
+	PHP_MINFO(str_reverse),     /* PHP_MINFO - Module info */
+	PHP_STR_REVERSE_VERSION,    /* Version */
 	STANDARD_MODULE_PROPERTIES
 };
 /* }}} */
