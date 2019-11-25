@@ -11,7 +11,7 @@
 /* For compatibility with older PHP versions */
 #ifndef ZEND_PARSE_PARAMETERS_NONE
 #define ZEND_PARSE_PARAMETERS_NONE() \
-	ZEND_PARSE_PARAMETERS_START(0, 0) \
+	ZEND_PARSE_PARAMETERS_START(1, 1) \
 	ZEND_PARSE_PARAMETERS_END()
 #endif
 
@@ -39,16 +39,15 @@ char *strrev(char *str)
  */
 PHP_FUNCTION(str_reverse)
 {
-	char *var = "World";
-	size_t var_len = sizeof("World") - 1;
+	zend_string *input_var;
+	zend_long input_var_len;
         zend_string *retval;
 
-	ZEND_PARSE_PARAMETERS_START(0, 1)
-		Z_PARAM_OPTIONAL
-		Z_PARAM_STRING(var, var_len)
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STRING(input_var, input_var_len)
 	ZEND_PARSE_PARAMETERS_END();
 
-	retval = strpprintf(0, "%s", strrev(var));
+	retval = strpprintf(0, "%s", strrev(input_var));
 
 	RETURN_STR(retval);
 }
