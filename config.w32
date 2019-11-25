@@ -1,0 +1,7 @@
+ARG_ENABLE('str_reverse', 'str_reverse support', 'no');
+
+if (PHP_STR_REVERSE != 'no') {
+	AC_DEFINE('HAVE_STR_REVERSE', 1, 'str_reverse support enabled');
+
+	EXTENSION('str_reverse', 'str_reverse.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+}
