@@ -95,14 +95,14 @@ static const zend_function_entry str_reverse_functions[] = {
  */
 zend_module_entry str_reverse_module_entry = {
 	STANDARD_MODULE_HEADER,
-	"str_reverse",					/* Extension name */
-	str_reverse_functions,			/* zend_function_entry */
-	NULL,							/* PHP_MINIT - Module initialization */
-	NULL,							/* PHP_MSHUTDOWN - Module shutdown */
-	PHP_RINIT(str_reverse),			/* PHP_RINIT - Request initialization */
-	NULL,							/* PHP_RSHUTDOWN - Request shutdown */
-	PHP_MINFO(str_reverse),			/* PHP_MINFO - Module info */
-	PHP_STR_REVERSE_VERSION,		/* Version */
+	"str_reverse",              /* Extension name */
+	str_reverse_functions,      /* zend_function_entry */
+	NULL,                       /* PHP_MINIT - Module initialization */
+	NULL,                       /* PHP_MSHUTDOWN - Module shutdown */
+	PHP_RINIT(str_reverse),     /* PHP_RINIT - Request initialization */
+	NULL,                       /* PHP_RSHUTDOWN - Request shutdown */
+	PHP_MINFO(str_reverse),     /* PHP_MINFO - Module info */
+	PHP_STR_REVERSE_VERSION,    /* Version */
 	STANDARD_MODULE_PROPERTIES
 };
 /* }}} */
